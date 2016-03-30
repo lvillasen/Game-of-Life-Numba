@@ -52,23 +52,18 @@ def life_game(M,n_iter):
     return(M)
 n=int(sys.argv[1])
 n_iter=int(sys.argv[2])
+m=int(sys.argv[3])
 M0=random_init(n)
 M=life_game(M0,n_iter)
 print("%d live cells after %d iterations" %(np.sum(M),n_iter))
-fig = plt.figure(figsize=(12,12))
-ax = fig.add_subplot(111)
-fig.suptitle("Conway's Game of Life Accelerated with Numba")
-ax.set_title('Number of Iterations = %d'%(n_iter))
-myobj =plt.imshow(M,origin='lower',cmap='Greys',  interpolation='nearest',vmin=0, vmax=1)
-plt.pause(.01)
-plt.draw()
-m=n_iter
-while True:
-    m+=1
-    M=life_game(M,1)
-    myobj.set_data(M)
-    ax.set_title('Number of Iterations = %d'%(m))
-    plt.pause(.01)
-    plt.draw()
-
-
+if m==1:
+    fig = plt.figure(figsize=(12,12))
+    ax = fig.add_subplot(111)
+    fig.suptitle("Conway's Game of Life Accelerated with Numba")
+    while m==1:
+        ax.set_title('Number of Iterations = %d'%(n_iter))
+        myobj =plt.imshow(M,origin='lower',cmap='Greys',  interpolation='nearest',vmin=0, vmax=1)
+        plt.draw()
+        plt.pause(.01)
+        n_iter+=1
+        M=life_game(M,1)
