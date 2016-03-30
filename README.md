@@ -13,7 +13,7 @@ n is the board size
 
 n_iter the initial number of iterations
 
-m is 1 to plot the board or 0 for no graphical output 
+m equal to 1 to plot the board or 0 for no display output 
 
 
 
